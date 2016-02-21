@@ -1,0 +1,12 @@
+---
+volumes: []
+volume_default_opts: noatime,nobootwait 
+volume_default_fstype: ext4
+ 
+#volumes:
+# - path: /vol/data 
+#   dev: /dev/sda1 
+#   fstype: ext4 (default)
+#   fsopts: noatime,nobootwait (default)
+#   state: mounted (default)
+

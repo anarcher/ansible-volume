@@ -1,0 +1,16 @@
+---
+- name: Prefer volume directories
+  file: path={{ item.path }} state=directory mode=0755
+  with_items: "{{ volumes }}"
+  when: volumes is defined
+  
+- name: Make filesystem
+  filesystem: fstype={{ item.fstype | default(volume_default_fstype) }} dev={{ item.dev }}
+  with_items: "{{ volumes }}"
+  when: volumes is defined
+
+- name: Mount volumes
+  mount: name={{ item.path }} src={{ item.dev }} fstype={{ item.fstype }} opts={{ item.fsopts | default(volume_default_ops) }} state={{ item.state | default("mounted") }}
+  with_items: "{{ volumes }}"
+  when: volumes is defined
+
