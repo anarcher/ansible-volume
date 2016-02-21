@@ -10,7 +10,7 @@
   when: volumes is defined
 
 - name: Mount volumes
-  mount: name={{ item.path }} src={{ item.dev }} fstype={{ item.fstype }} opts={{ item.fsopts | default(volume_default_ops) }} state={{ item.state | default("mounted") }}
+  mount: name={{ item.path }} src={{ item.dev }} fstype={{ item.fstype }} opts={{ item.fsopts | default(volume_default_opts) }} state={{ item.state | default("mounted") }}
   with_items: "{{ volumes }}"
   when: volumes is defined
 
